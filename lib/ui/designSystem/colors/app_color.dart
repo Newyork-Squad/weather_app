@@ -15,8 +15,8 @@ class AppColors {
     surfaceSecondary: Color(0x14060414),
     brand: Color(0xFF87CEFA),
     strokePrimary: Color(0x14FFFFFF),
-    strokeSecondary: Color(0x3D060414)
-
+    strokeSecondary: Color(0x3D060414),
+    glow: Color(0xFF00619D)
   );
 
   static const dark = AppColorScheme(
@@ -30,7 +30,8 @@ class AppColors {
     surfaceSecondary: Color(0x14060414),
     brand: Color(0xFF87CEFA),
     strokePrimary: Color(0x14FFFFFF),
-    strokeSecondary: Color(0x3DFFFFFF)
+    strokeSecondary: Color(0x3DFFFFFF),
+    glow: Color(0xFFC0B7FF)
   );
 }
 
@@ -46,6 +47,7 @@ class AppColorScheme {
   final Color brand;
   final Color strokePrimary;
   final Color strokeSecondary;
+  final Color glow;
 
   const AppColorScheme({
     required this.backgroundPrimary,
@@ -58,6 +60,7 @@ class AppColorScheme {
     required this.surfaceSecondary,
     required this.brand,
     required this.strokePrimary,
-    required this.strokeSecondary
+    required this.strokeSecondary,
+    required this.glow
   });
 }
