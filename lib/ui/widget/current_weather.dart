@@ -30,6 +30,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
       alpha: 0.6,
     );
     return SliverAppBar(
+      collapsedHeight: 145.0,
       expandedHeight: 480.0,
       backgroundColor: Colors.transparent,
       flexibleSpace: LayoutBuilder(
