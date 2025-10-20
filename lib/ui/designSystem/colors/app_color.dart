@@ -14,6 +14,8 @@ class AppColors {
     surfacePrimary: Color(0xB3FFFFFF),
     surfaceSecondary: Color(0x14060414),
     brand: Color(0xFF87CEFA),
+    strokePrimary: Color(0x14FFFFFF),
+    strokeSecondary: Color(0x3D060414)
 
   );
 
@@ -26,7 +28,9 @@ class AppColors {
     shadeQuaternary: Color(0xFFFFFFFF),
     surfacePrimary: Color(0xB3060414),
     surfaceSecondary: Color(0x14060414),
-    brand: Color(0x14FFFFFF),
+    brand: Color(0xFF87CEFA),
+    strokePrimary: Color(0x14FFFFFF),
+    strokeSecondary: Color(0x3DFFFFFF)
   );
 }
 
@@ -40,6 +44,8 @@ class AppColorScheme {
   final Color surfacePrimary;
   final Color surfaceSecondary;
   final Color brand;
+  final Color strokePrimary;
+  final Color strokeSecondary;
 
   const AppColorScheme({
     required this.backgroundPrimary,
@@ -50,6 +56,8 @@ class AppColorScheme {
     required this.shadeQuaternary,
     required this.surfacePrimary,
     required this.surfaceSecondary,
-    required this.brand
+    required this.brand,
+    required this.strokePrimary,
+    required this.strokeSecondary
   });
 }
