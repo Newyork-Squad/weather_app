@@ -4,7 +4,7 @@ import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
 import 'package:weather_app/ui/screen/home_screen.dart';
 
 void main() {
-  runApp(AppThemeProvider(brightness: Brightness.light, child: const MyApp()));
+  runApp(MaterialApp( debugShowCheckedModeBanner: false, home: AppThemeProvider(brightness: Brightness.light, child: const MyApp())));
 }
 
 class MyApp extends StatelessWidget {
