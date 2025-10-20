@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
               theme.colors.backgroundPrimary,
               theme.colors.backgroundSecondary,
             ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: SafeArea(child: MyHomePage()), // SafeArea to avoid overlaps with system UI
