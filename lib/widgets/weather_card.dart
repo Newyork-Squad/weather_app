@@ -16,28 +16,39 @@ class WeatherCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF3E3E4A),
+        color: const Color(0xFF060414),
         borderRadius: BorderRadius.circular(20),
       ),
       padding: const EdgeInsets.all(16.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 36, color: Colors.lightBlueAccent),
-          const SizedBox(height: 10),
-          Text(
-            value,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+          Flexible(
+            child: Icon(icon, size: 36, color: Colors.lightBlueAccent),
+          ),
+          const SizedBox(height: 8),
+          Flexible(
+            child: Text(
+              value,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          Text(
-            label,
-            style: const TextStyle(
-              color: Colors.white60,
-              fontSize: 14,
+          Flexible(
+            child: Text(
+              label,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 13,
+              ),
             ),
           ),
         ],
