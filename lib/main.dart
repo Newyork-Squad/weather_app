@@ -15,9 +15,30 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  void _loadWeather() async {
+    final weatherApi = WeatherApiService();
 
+    try {
+      final data = await weatherApi.getWeather(
+        latitude: 30.0444,
+        longitude: 31.2357,
+      );
+
+      print('============== Weather Data ==============');
+      print('Temperature: ${data.current?.temperature2m}${data.currentUnits?.temperature2m}');
+      print('Feels like: ${data.current?.apparentTemperature}${data.currentUnits?.apparentTemperature}');
+      print('Humidity: ${data.current?.relativeHumidity2m}${data.currentUnits?.relativeHumidity2m}');
+      print('Wind Speed: ${data.current?.windSpeed10m} ${data.currentUnits?.windSpeed10m}');
+      print('Weather Code: ${data.current?.weatherCode}');
+      print('Is Day: ${data.current?.isDay}');
+      print('==========================================');
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
   @override
   Widget build(BuildContext context) {
+    _loadWeather();
     final theme = MyWeatherTheme.of(context);
 
     return Directionality(
