@@ -50,12 +50,26 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
-flutter:
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+flutter:
   uses-material-design: true
+
+  assets:
+    - assets/fonts/
+
+  fonts:
+    - family: Urbanist
+      fonts:
+        - asset: assets/fonts/urbanist_regular.ttf
+          weight: 400
+        - asset: assets/fonts/urbanist_medium.ttf
+          weight: 500
+        - asset: assets/fonts/urbanist_semi_bold.ttf
+          weight: 600
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
