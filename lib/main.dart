@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/ui/designSystem/theme/AppThemeProvider.dart';
 import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:weather_app/ui/screen/home_screen.dart';
 
 void main() {
-  runApp(
-    AppThemeProvider(
-      brightness: Brightness.light,
-      child: const MyApp(),
-    ),
-  );
+  runApp(AppThemeProvider(brightness: Brightness.light, child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,40 +13,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = MyWeatherTheme.of(context);
-
     return Directionality(
       textDirection: TextDirection.ltr,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            color: theme.colors.backgroundPrimary,
-            child: Center(
-              child: Container(
-                color: theme.colors.surfaceSecondary,
-                padding: const EdgeInsets.all(16),
-                child: Text(
-                  "This is the new design system",
-                  style: theme.typography.textTheme.headlineLarge?.copyWith(
-                      color: theme.colors.shadePrimary
-                  ),
-                ),
-              ),
-            ),
+      child: Container( // Same background for the entire app
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              theme.colors.backgroundPrimary,
+              theme.colors.backgroundSecondary,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
-          Image.asset(
-            'assets/images/clear_sky_day.png',
-            width: 100,
-            height: 100,
-          ),
-          SvgPicture.asset(
-            'assets/icons/ic_fast_wind.svg',
-            width: 48,
-            height: 48,
-            color: theme.colors.brand,
-          )
-        ],
-      )
+        ),
+        child: SafeArea(child: MyHomePage()), // SafeArea to avoid overlaps with system UI
+      ),
     );
   }
 }
