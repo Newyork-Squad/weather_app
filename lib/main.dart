@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/ui/designSystem/theme/AppThemeProvider.dart';
+import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/presentation/widget/current_weather.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    AppThemeProvider(
+      brightness: Brightness.light,
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -10,6 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = MyWeatherTheme.of(context);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
