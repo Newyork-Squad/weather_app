@@ -49,17 +49,34 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  flutter_svg: ^2.2.1
 
-# For information on the generic Dart part of this file, see the
+  # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
-flutter:
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+flutter:
   uses-material-design: true
+
+  assets:
+    - assets/fonts/
+    - assets/images/
+    - assets/icons/
+
+  fonts:
+    - family: Urbanist
+      fonts:
+        - asset: assets/fonts/urbanist_regular.ttf
+          weight: 400
+        - asset: assets/fonts/urbanist_medium.ttf
+          weight: 500
+        - asset: assets/fonts/urbanist_semi_bold.ttf
+          weight: 600
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
