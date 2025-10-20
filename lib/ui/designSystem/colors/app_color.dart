@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+
+
+class AppColors {
+  AppColors._();
+
+  static const light = AppColorScheme(
+    backgroundPrimary: Color(0xFF87CEFA),
+    backgroundSecondary: Color(0xFFFFFFFF),
+    shadePrimary: Color(0xFF060414),
+    shadeSecondary: Color(0xDE060414),
+    shadeTertiary: Color(0x99060414),
+    shadeQuaternary: Color(0xFF323232),
+    surfacePrimary: Color(0xB3FFFFFF),
+    surfaceSecondary: Color(0x14060414),
+    brand: Color(0xFF87CEFA),
+
+  );
+
+  static const dark = AppColorScheme(
+    backgroundPrimary: Color(0xFF060414),
+    backgroundSecondary: Color(0xFF0D0C19),
+    shadePrimary: Color(0xFFFFFFFF),
+    shadeSecondary: Color(0xDEFFFFFF),
+    shadeTertiary: Color(0x99060414),
+    shadeQuaternary: Color(0xFFFFFFFF),
+    surfacePrimary: Color(0xB3060414),
+    surfaceSecondary: Color(0x14060414),
+    brand: Color(0x14FFFFFF),
+  );
+}
+
+class AppColorScheme {
+  final Color backgroundPrimary;
+  final Color backgroundSecondary;
+  final Color shadePrimary;
+  final Color shadeSecondary;
+  final Color shadeTertiary;
+  final Color shadeQuaternary;
+  final Color surfacePrimary;
+  final Color surfaceSecondary;
+  final Color brand;
+
+  const AppColorScheme({
+    required this.backgroundPrimary,
+    required this.backgroundSecondary,
+    required this.shadePrimary,
+    required this.shadeSecondary,
+    required this.shadeTertiary,
+    required this.shadeQuaternary,
+    required this.surfacePrimary,
+    required this.surfaceSecondary,
+    required this.brand
+  });
+}
