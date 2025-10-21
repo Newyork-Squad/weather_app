@@ -8,6 +8,15 @@ class WeatherApiService {
     _dio.options.baseUrl = 'https://api.open-meteo.com/v1';
     _dio.options.connectTimeout = const Duration(seconds: 60);
     _dio.options.receiveTimeout = const Duration(seconds: 60);
+    _dio.interceptors.add(
+      LogInterceptor(
+        request: false,
+        requestBody: false,
+        responseBody: true,
+        responseHeader: false,
+        error: true,
+      ),
+    );
   }
 
   Future<WeatherResponseDto> getWeather({
