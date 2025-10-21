@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:weather_app/model/weather_response_dto.dart';
+import 'package:weather_app/data/dto/weather_response_dto.dart';
 
 class WeatherApiService {
   final Dio _dio;
@@ -43,6 +43,7 @@ class WeatherApiService {
         throw Exception('Failed to fetch weather data: ${e.message}');
       }
     } catch (e) {
+      print('💥 Error in getWeather: $e');
       throw Exception('Unexpected error: $e');
     }
   }
