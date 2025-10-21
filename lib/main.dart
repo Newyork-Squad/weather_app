@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/ui/designSystem/theme/AppThemeProvider.dart';
 import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
-  runApp(const AppThemeProvider(
-      brightness: Brightness.dark, child: MyApp()));
+  runApp(
+    const AppThemeProvider(
+      brightness: Brightness.dark,
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -47,7 +50,7 @@ class WeatherHomePage extends StatelessWidget {
           crossAxisCount: 3,
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
-          children: [
+          children: const [
             WeatherCard(
               icon: 'assets/icons/ic_fast_wind.svg',
               value: '13 KM/h',
@@ -124,12 +127,14 @@ class WeatherCard extends StatelessWidget {
                 theme.colors.brand,
                 BlendMode.srcIn,
               ),
-              // Add error handling
-              placeholderBuilder: (context) => Icon(
-                Icons.image_not_supported,
-                size: 32,
-                color: theme.colors.brand,
-              ),
+              placeholderBuilder: (context) {
+                debugPrint('⚠️ Failed to load SVG: $icon');
+                return Icon(
+                  Icons.image_not_supported,
+                  size: 32,
+                  color: theme.colors.brand,
+                );
+              },
             ),
           ),
           const SizedBox(height: 8),
@@ -156,21 +161,6 @@ class WeatherCard extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    return Directionality(
-      textDirection: TextDirection.ltr,
-      child: Container( // Same background for the entire app
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              theme.colors.backgroundPrimary,
-              theme.colors.backgroundSecondary,
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
-        child: SafeArea(child: MyHomePage()), // SafeArea to avoid overlaps with system UI
       ),
     );
   }
