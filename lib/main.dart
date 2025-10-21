@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/ui/designSystem/theme/AppThemeProvider.dart';
 import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
-  runApp(
-    const AppThemeProvider(
-      brightness: Brightness.dark,
-      child: MyApp(),
-    ),
-  );
+  runApp(const AppThemeProvider(
+      brightness: Brightness.dark, child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -159,6 +156,21 @@ class WeatherCard extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Container( // Same background for the entire app
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              theme.colors.backgroundPrimary,
+              theme.colors.backgroundSecondary,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: SafeArea(child: MyHomePage()), // SafeArea to avoid overlaps with system UI
       ),
     );
   }
