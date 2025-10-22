@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../designSystem/theme/weather_theme.dart';
 
@@ -154,10 +155,14 @@ class _WeatherInfoColumnState extends State<WeatherInfoColumn> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(right: 4.0),
-                  child: ImageIcon(
-                    AssetImage('assets/icons/arrow_up.png'),
-                    color: alphaShadePrimaryColor,
-                    size: 12,
+                  child: SvgPicture.asset(
+                    'assets/icons/ic_arrow_up.svg',
+                    width: 12,
+                    height: 12,
+                    colorFilter: ColorFilter.mode(
+                      alphaShadePrimaryColor,
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
                 Text(
@@ -176,10 +181,14 @@ class _WeatherInfoColumnState extends State<WeatherInfoColumn> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 4.0),
-                  child: ImageIcon(
-                    AssetImage('assets/icons/arrow_down.png'),
-                    color: alphaShadePrimaryColor,
-                    size: 12,
+                  child: SvgPicture.asset(
+                    'assets/icons/ic_arrow_down.svg',
+                    width: 12,
+                    height: 12,
+                    colorFilter: ColorFilter.mode(
+                      alphaShadePrimaryColor,
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
                 Text(
