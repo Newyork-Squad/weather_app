@@ -16,6 +16,14 @@ class _MyHomePageState extends State<MyHomePage> {
     final theme = MyWeatherTheme.of(context);
     return CustomScrollView(
       slivers: <Widget>[
+        SliverToBoxAdapter( // Placeholder for location
+          child: Container(
+            alignment: Alignment.center,
+            color: Colors.black,
+            width: 20,
+            height: 30,
+          ),
+        ),
         CurrentWeather(
           temperature: 22.2,
           weatherIcon: 2,
