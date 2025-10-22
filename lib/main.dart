@@ -5,7 +5,7 @@ import 'package:weather_app/ui/screen/home_screen.dart';
 void main() {
   runApp(
     const AppThemeProvider(
-      brightness: Brightness.light,
+      brightness: Brightness.dark,
       child: MyApp(),
     ),
   );
