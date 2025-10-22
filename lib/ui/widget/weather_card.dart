@@ -59,7 +59,6 @@ class WeatherCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: theme.typography.textTheme.labelLarge?.copyWith(
                 color: theme.colors.shadePrimary,
-                fontWeight: FontWeight.bold,
               ),
             ),
           ),
