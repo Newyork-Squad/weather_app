@@ -19,15 +19,15 @@ class CurrentWeather extends StatefulWidget {
   final double minTemp;
 
   @override
-  _CurrentWeatherState createState() => _CurrentWeatherState();
+  State<CurrentWeather> createState() => _CurrentWeatherState();
 }
 
 class _CurrentWeatherState extends State<CurrentWeather> {
   @override
   Widget build(BuildContext context) {
-    const maxHeight = 390.0;
+    const maxHeight = 400.0;
     const minHeight = 215.0;
-    const titleWidth = 145.0;
+    const titleWidth = 166.0;
     return SliverAppBar(
       floating: true,
       collapsedHeight: minHeight,
@@ -63,7 +63,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                   left: imageLeftPadding,
                   bottom: currentHeight - minHeight - 20,
                   child: Transform.scale(
-                    alignment: Alignment.centerLeft,
+                    alignment: Alignment.topLeft,
                     scale: shrinkPercentage.clamp(0.8, 1.0),
                     child: Image(
                       image: AssetImage(
@@ -131,10 +131,13 @@ class _WeatherInfoColumnState extends State<WeatherInfoColumn> {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        Text(
-          widget.weatherMessage,
-          style: theme.typography.textTheme.labelLarge?.copyWith(
-            color: alphaShadePrimaryColor,
+        Padding(
+          padding: const EdgeInsets.only(bottom: 12.0),
+          child: Text(
+            widget.weatherMessage,
+            style: theme.typography.textTheme.labelLarge?.copyWith(
+              color: alphaShadePrimaryColor,
+            ),
           ),
         ),
         Container(
@@ -142,26 +145,53 @@ class _WeatherInfoColumnState extends State<WeatherInfoColumn> {
             color: theme.colors.shadePrimary.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(100),
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.arrow_upward, color: alphaShadePrimaryColor),
-              Text(
-                '${widget.maxTemp}°C',
-                style: theme.typography.textTheme.labelLarge?.copyWith(
-                  color: alphaShadePrimaryColor,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 8.0,
+              horizontal: 22.5,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 4.0),
+                  child: ImageIcon(
+                    AssetImage('assets/icons/arrow_up.png'),
+                    color: alphaShadePrimaryColor,
+                    size: 12,
+                  ),
                 ),
-              ),
-              SizedBox(width: 10),
-              Icon(Icons.arrow_downward, color: alphaShadePrimaryColor),
-              Text(
-                '${widget.minTemp}°C',
-                style: theme.typography.textTheme.labelLarge?.copyWith(
-                  color: alphaShadePrimaryColor,
+                Text(
+                  '${widget.maxTemp}°C',
+                  style: theme.typography.textTheme.labelLarge?.copyWith(
+                    color: alphaShadePrimaryColor,
+                  ),
                 ),
-              ),
-            ],
+                RotatedBox(
+                  quarterTurns: 1,
+                  child: Icon(
+                    Icons.horizontal_rule,
+                    color: alphaShadePrimaryColor,
+                    size: 18,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 4.0),
+                  child: ImageIcon(
+                    AssetImage('assets/icons/arrow_down.png'),
+                    color: alphaShadePrimaryColor,
+                    size: 12,
+                  ),
+                ),
+                Text(
+                  '${widget.minTemp}°C',
+                  style: theme.typography.textTheme.labelLarge?.copyWith(
+                    color: alphaShadePrimaryColor,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],
