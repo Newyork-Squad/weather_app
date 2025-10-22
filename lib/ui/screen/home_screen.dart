@@ -43,7 +43,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         SliverToBoxAdapter(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            padding: const EdgeInsets.only(
+              left: 12,
+              right: 12,
+              top: 0,
+              bottom: 24,
+            ),
             child: WeatherInfoGrid(
               windSpeed: "5.0",
               humidity: "60",
