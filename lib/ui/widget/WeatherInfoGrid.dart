@@ -49,7 +49,7 @@ class WeatherInfoGrid extends StatelessWidget {
           label: 'UV Index',
         ),
         WeatherCard(
-          icon: 'assets/icons/ic_arrow_down.svg',
+          icon: 'assets/icons/ic_arrow_down_05.svg',
           value: pressure,
           label: 'Pressure',
         ),
