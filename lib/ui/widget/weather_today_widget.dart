@@ -11,7 +11,7 @@ class WeatherTodayWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = MyWeatherTheme.of(context);
     return Container(
-      decoration: BoxDecoration(color: theme.colors.backgroundPrimary),
+      decoration: BoxDecoration(color: Colors.transparent),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
