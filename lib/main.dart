@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/data/mapper/weather_response_mapper.dart';
 import 'package:weather_app/ui/designSystem/theme/AppThemeProvider.dart';
 import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'data/weather_api_service.dart';
 
 void main() {
   runApp(
@@ -13,6 +16,29 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: WeatherHomePage(),
+    );
+  }
+}
+
+class WeatherHomePage extends StatefulWidget {
+  const WeatherHomePage({super.key});
+
+  @override
+  State<WeatherHomePage> createState() => _WeatherHomePageState();
+}
+
+class _WeatherHomePageState extends State<WeatherHomePage> {
+  @override
+  void initState() {
+    super.initState();
+    _loadWeather();
+  }
 
   void _loadWeather() async {
     final weatherApi = WeatherApiService();
@@ -50,7 +76,6 @@ class MyApp extends StatelessWidget {
         print('Temp: ${now.temperature}');
         print('Weather Code: ${now.weatherCode}');
       }
-
     } catch (e) {
       print('Error: $e');
     }
@@ -58,7 +83,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _loadWeather();
     final theme = MyWeatherTheme.of(context);
 
     return Scaffold(
