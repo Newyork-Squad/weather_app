@@ -25,46 +25,67 @@ class CurrentWeather extends StatefulWidget {
 class _CurrentWeatherState extends State<CurrentWeather> {
   @override
   Widget build(BuildContext context) {
-    const maxHeight = 480.0;
+    const maxHeight = 390.0;
     const minHeight = 150.0;
-    const titleWidth = 280.0;
+    const titleWidth = 145.0;
     return SliverAppBar(
+      floating: true,
       collapsedHeight: minHeight,
       expandedHeight: maxHeight,
       backgroundColor: Colors.transparent,
       flexibleSpace: LayoutBuilder(
         builder: (context, constraints) {
           double currentHeight = constraints.biggest.height;
-          const startPosition = 0.0;
-          double finalPosition =
-              (MediaQuery.of(context).size.width) -
-              titleWidth -
-              12; // width - titleWidth - padding
+          double screenWidth = MediaQuery.of(context).size.width;
           double shrinkPercentage =
               (currentHeight - minHeight) / (maxHeight - minHeight);
-          double xOffset =
-              startPosition +
-              (finalPosition - startPosition) * (1 - shrinkPercentage);
+          double detailsRightPadding =
+              ((screenWidth / 2 - titleWidth / 2) * shrinkPercentage).clamp(
+                12.0,
+                double.infinity,
+              );
+          double imageWidth = 255.0;
+          double imageLeftPadding =
+              ((screenWidth / 2 - imageWidth / 2) * shrinkPercentage).clamp(
+                -10.0,
+                double.infinity,
+              );
+
           return FlexibleSpaceBar(
             centerTitle: true,
-            titlePadding: EdgeInsets.only(
-              top: 0,
-              left: 0,
-              bottom: 24,
-              right: 0,
-            ),
+            titlePadding: EdgeInsets.only(top: 0, left: 0, bottom: 0, right: 0),
             expandedTitleScale: 1.0,
             // Prevents default scaling
-            title: Container(
-              child: Transform.translate(
-                offset: Offset(xOffset, 0),
-                child: WeatherInfoColumn(
-                  temperature: widget.temperature,
-                  weatherMessage: widget.weatherMessage,
-                  maxTemp: widget.maxTemp,
-                  minTemp: widget.minTemp,
+            title: Stack(
+              fit: StackFit.expand,
+              children: [
+                Positioned(
+                  left: imageLeftPadding,
+                  top: 12,
+                  child: Transform.scale(
+                    alignment: Alignment.topLeft,
+                    scale: shrinkPercentage.clamp(0.8, 1.0),
+                    child: Image(
+                      image: AssetImage(
+                        'assets/images/snow_fall_light_day.png',
+                      ),
+                      width: imageWidth,
+                      height: 215,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
-              ),
+                Positioned(
+                  right: detailsRightPadding,
+                  bottom: 24,
+                  child: WeatherInfoColumn(
+                    temperature: imageLeftPadding ,// widget.temperature,
+                    weatherMessage: widget.weatherMessage,
+                    maxTemp: widget.maxTemp,
+                    minTemp: widget.minTemp,
+                  ),
+                ),
+              ],
             ),
           );
         },
