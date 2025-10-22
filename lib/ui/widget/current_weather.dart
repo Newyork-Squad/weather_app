@@ -31,7 +31,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
     const titleWidth = 166.0;
     return SliverAppBar(
       floating: true,
-      collapsedHeight: minHeight,
+      collapsedHeight: 140,
       expandedHeight: maxHeight,
       backgroundColor: Colors.transparent,
       flexibleSpace: LayoutBuilder(
