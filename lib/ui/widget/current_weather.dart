@@ -13,7 +13,7 @@ class CurrentWeather extends StatefulWidget {
   });
 
   final double temperature;
-  final int weatherIcon;
+  final String weatherIcon;
   final String weatherMessage;
   final double maxTemp;
   final double minTemp;
@@ -66,9 +66,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                     alignment: Alignment.topLeft,
                     scale: shrinkPercentage.clamp(0.8, 1.0),
                     child: Image(
-                      image: AssetImage(
-                        'assets/images/snow_fall_light_day.png',
-                      ),
+                      image: AssetImage(widget.weatherIcon),
                       width: imageWidth,
                       height: 215,
                       fit: BoxFit.contain,
