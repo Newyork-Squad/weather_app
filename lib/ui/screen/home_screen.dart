@@ -74,17 +74,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Column(
       children: <Widget>[
-        Container(
-          height: 100,
-          width: 100,
-          color: theme.colors.surfacePrimary,
-          alignment: Alignment.center,
-          child: Text(
-            'Weather',
-            style: theme.typography.textTheme.titleMedium,
-          ),
-        ),
-        const SizedBox(height: 20),
         WeatherInfoGrid(
           windSpeed: _windSpeed,
           humidity: _humidity,
