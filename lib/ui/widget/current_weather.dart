@@ -62,7 +62,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
               children: [
                 Positioned(
                   left: imageLeftPadding,
-                  bottom: currentHeight - minHeight - 20,
+                  bottom: (currentHeight - minHeight - 20).clamp(-30, double.infinity),
                   child: Transform.scale(
                     alignment: Alignment.topLeft,
                     scale: shrinkPercentage.clamp(0.8, 1.0),
