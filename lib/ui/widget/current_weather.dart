@@ -29,7 +29,6 @@ class _CurrentWeatherState extends State<CurrentWeather> {
     const minHeight = 215.0;
     const titleWidth = 145.0;
     return SliverAppBar(
-      snap: true,
       floating: true,
       collapsedHeight: minHeight,
       expandedHeight: maxHeight,
