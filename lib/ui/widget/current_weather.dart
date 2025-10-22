@@ -26,9 +26,10 @@ class _CurrentWeatherState extends State<CurrentWeather> {
   @override
   Widget build(BuildContext context) {
     const maxHeight = 390.0;
-    const minHeight = 150.0;
+    const minHeight = 215.0;
     const titleWidth = 145.0;
     return SliverAppBar(
+      snap: true,
       floating: true,
       collapsedHeight: minHeight,
       expandedHeight: maxHeight,
@@ -47,7 +48,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
           double imageWidth = 255.0;
           double imageLeftPadding =
               ((screenWidth / 2 - imageWidth / 2) * shrinkPercentage).clamp(
-                -10.0,
+                12.0,
                 double.infinity,
               );
 
@@ -61,9 +62,9 @@ class _CurrentWeatherState extends State<CurrentWeather> {
               children: [
                 Positioned(
                   left: imageLeftPadding,
-                  top: 12,
+                  bottom: currentHeight - minHeight - 20,
                   child: Transform.scale(
-                    alignment: Alignment.topLeft,
+                    alignment: Alignment.centerLeft,
                     scale: shrinkPercentage.clamp(0.8, 1.0),
                     child: Image(
                       image: AssetImage(
@@ -79,7 +80,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                   right: detailsRightPadding,
                   bottom: 24,
                   child: WeatherInfoColumn(
-                    temperature: imageLeftPadding ,// widget.temperature,
+                    temperature: widget.temperature,
                     weatherMessage: widget.weatherMessage,
                     maxTemp: widget.maxTemp,
                     minTemp: widget.minTemp,
