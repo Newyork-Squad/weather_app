@@ -26,6 +26,7 @@ class CurrentWeather extends StatefulWidget {
 class _CurrentWeatherState extends State<CurrentWeather> {
   @override
   Widget build(BuildContext context) {
+    final theme = MyWeatherTheme.of(context);
     const maxHeight = 400.0;
     const minHeight = 215.0;
     const titleWidth = 166.0;
@@ -66,11 +67,36 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                   child: Transform.scale(
                     alignment: Alignment.topLeft,
                     scale: shrinkPercentage.clamp(0.8, 1.0),
-                    child: Image(
-                      image: AssetImage(widget.weatherIcon),
+                    child: SizedBox(
                       width: imageWidth,
                       height: 215,
-                      fit: BoxFit.contain,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Container(
+                            width: imageWidth * 0.9,
+                            height: 200,
+                            alignment: Alignment.bottomCenter,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.transparent,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: theme.colors.glow.withValues(alpha: 0.2),
+                                  blurRadius:40,
+                                  spreadRadius: 0,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Image(
+                            image: AssetImage(widget.weatherIcon),
+                            width: imageWidth * 0.95,
+                            height: 215,
+                            fit: BoxFit.contain,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
