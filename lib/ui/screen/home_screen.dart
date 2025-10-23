@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),*/
         CurrentWeather(
           temperature: 22.2,
-          weatherIcon: 'assets/images/snow_fall_light_day.png',
+          weatherIcon: getWeatherIconRes(1 , isDay: true),
           weatherMessage: "weatherMessage",
           maxTemp: 2.2,
           minTemp: 1.2,
@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: WeatherTodayWidget(
             items: [
               WeatherItem(
-                imagePath: 'assets/images/snow_fall_light_day.png',
+                imagePath: getWeatherIconRes(1),
                 temperature: "20.0",
                 hour: "10:00",
               ),
@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
       day: "24/10/2025",
       maxTemp: 31,
       minTemp: 22,
-      imagePath: getWeatherIconRes(0),
+      imagePath: getWeatherIconRes(45),
     ),
     WeatherDayCard(
       day: "25/10/2025",
@@ -116,13 +116,13 @@ class _MyHomePageState extends State<MyHomePage> {
       day: "27/10/2025",
       maxTemp: 27,
       minTemp: 18,
-      imagePath: getWeatherIconRes(0),
+      imagePath: getWeatherIconRes(55),
     ),
     WeatherDayCard(
       day: "28/10/2025",
       maxTemp: 27,
       minTemp: 18,
-      imagePath: getWeatherIconRes(2),
+      imagePath: getWeatherIconRes(65),
     ),
   ];
 }
