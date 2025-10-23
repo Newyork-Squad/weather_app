@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/data/mapper/weather_response_mapper.dart';
-import 'package:weather_app/data/weather_api_service.dart';
 import 'package:weather_app/ui/designSystem/theme/AppThemeProvider.dart';
 import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
 import 'package:weather_app/ui/screen/home_screen.dart';
 import 'package:weather_app/data/location_service.dart';
 
 void main() {
-  runApp(AppThemeProvider(brightness: Brightness.light, child: const MyApp()));
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AppThemeProvider(
+        brightness: Brightness.light,
+        child: const MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -67,25 +73,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _loadWeather();
     final theme = MyWeatherTheme.of(context);
-    return Directionality(
-      textDirection: TextDirection.ltr,
-      child: Container(
-        // Same background for the entire app
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              theme.colors.backgroundPrimary,
-              theme.colors.backgroundSecondary,
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+    return Material(
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Container(
+          // Same background for the entire app
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                theme.colors.backgroundPrimary,
+                theme.colors.backgroundSecondary,
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
           ),
+          child: SafeArea(
+            child: MyHomePage(),
+          ), // SafeArea to avoid overlaps with system UI
         ),
-        child: SafeArea(
-          child: MyHomePage(),
-        ), // SafeArea to avoid overlaps with system UI
       ),
     );
   }

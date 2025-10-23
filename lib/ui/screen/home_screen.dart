@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../ui/designSystem/theme/weather_theme.dart';
+import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
+import 'package:weather_app/ui/widget/current_weather.dart';
+import 'package:weather_app/ui/widget/weather_today_item_card.dart';
+import 'package:weather_app/ui/widget/weather_today_widget.dart';
+
+import '../widget/WeatherInfoGrid.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -10,15 +15,69 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = MyWeatherTheme.of(context);
-    return Column(
-      children: <Widget>[
-        Container( // Placeholder for yor widget
-          height: 100,
-          width: 100,
-          color: theme.colors.surfacePrimary,
-          alignment: Alignment.center,
+
+    return CustomScrollView(
+      slivers: <Widget>[
+        // Placeholder for location
+        /*SliverToBoxAdapter(
+          child: Container(
+            alignment: Alignment.center,
+            color: Colors.black,
+            width: 20,
+            height: 30,
+          ),
+        ),*/
+        CurrentWeather(
+          temperature: 22.2,
+          weatherIcon: 'assets/images/snow_fall_light_day.png',
+          weatherMessage: "weatherMessage",
+          maxTemp: 2.2,
+          minTemp: 1.2,
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 12,
+              right: 12,
+              top: 0,
+              bottom: 24,
+            ),
+            child: WeatherInfoGrid(
+              windSpeed: "5.0",
+              humidity: "60",
+              uvIndex: "3",
+              pressure: "1013",
+              feelsLike: "21.0",
+              rainChance: "10",
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: WeatherTodayWidget(
+            items: [
+              WeatherItem(
+                imagePath: 'assets/images/snow_fall_light_day.png',
+                temperature: "20.0",
+                hour: "10:00",
+              ),
+            ],
+          ),
+        ),
+        // Placeholder for yor widget
+        SliverToBoxAdapter(
+          child: Container(
+            height: 400,
+            width: 100,
+            color: theme.colors.glow,
+            alignment: Alignment.center,
+          ),
         ),
       ],
     );
