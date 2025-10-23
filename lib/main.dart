@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/ui/designSystem/theme/AppThemeProvider.dart';
 import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
 import 'package:weather_app/ui/screen/home_screen.dart';
+import 'package:weather_app/ui/widget/weakly_weather_widget.dart';
 
 void main() {
   runApp(

@@ -4,7 +4,10 @@ import 'package:weather_app/ui/widget/current_weather.dart';
 import 'package:weather_app/ui/widget/weather_today_item_card.dart';
 import 'package:weather_app/ui/widget/weather_today_widget.dart';
 
+import '../../utils/weather_utils.dart';
 import '../widget/WeatherInfoGrid.dart';
+import '../widget/daily_card.dart';
+import '../widget/weakly_weather_widget.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -18,6 +21,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,16 +75,54 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-        // Placeholder for yor widget
-        SliverToBoxAdapter(
-          child: Container(
-            height: 400,
-            width: 100,
-            color: theme.colors.glow,
-            alignment: Alignment.center,
-          ),
-        ),
-      ],
+    SliverToBoxAdapter(
+    child:WeeklyForecastWidget(weeklyForecast: weeklyForecast),
+    )  ],
     );
   }
+  //dummy weekly data
+  final List<WeatherDayCard> weeklyForecast = [
+    WeatherDayCard(
+      day: "22/10/2025",
+      maxTemp: 29,
+      minTemp: 21,
+      imagePath: getWeatherIconRes(0),
+    ),
+    WeatherDayCard(
+      day: "23/10/2025",
+      maxTemp: 28,
+      minTemp: 20,
+      imagePath: getWeatherIconRes(1),
+    ),
+    WeatherDayCard(
+      day: "24/10/2025",
+      maxTemp: 31,
+      minTemp: 22,
+      imagePath: getWeatherIconRes(0),
+    ),
+    WeatherDayCard(
+      day: "25/10/2025",
+      maxTemp: 30,
+      minTemp: 19,
+      imagePath: getWeatherIconRes(2),
+    ),
+    WeatherDayCard(
+      day: "26/10/2025",
+      maxTemp: 27,
+      minTemp: 18,
+      imagePath: getWeatherIconRes(3),
+    ),
+    WeatherDayCard(
+      day: "27/10/2025",
+      maxTemp: 27,
+      minTemp: 18,
+      imagePath: getWeatherIconRes(0),
+    ),
+    WeatherDayCard(
+      day: "28/10/2025",
+      maxTemp: 27,
+      minTemp: 18,
+      imagePath: getWeatherIconRes(2),
+    ),
+  ];
 }

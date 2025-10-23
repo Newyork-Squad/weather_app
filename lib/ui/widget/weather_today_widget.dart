@@ -27,7 +27,7 @@ class WeatherTodayWidget extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           SizedBox(
-            height: 180,
+            height: 130,
             child: ListView.separated(
               itemCount: items.length,
               scrollDirection: Axis.horizontal,
