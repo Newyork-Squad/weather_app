@@ -5,7 +5,7 @@ String getWeatherIconRes(int weatherCode,{bool isDay = true}  ) {
   switch (weatherCode) {
     case 0:
       return isDay
-          ? 'assets/images/clear_sky_day.png'
+          ? 'assets/images/clear_sky.png'
           : 'assets/images/clear_sky_night.png';
     case 1:
       return isDay
