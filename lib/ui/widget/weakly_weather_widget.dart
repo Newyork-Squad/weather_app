@@ -14,7 +14,7 @@ class WeeklyForecastWidget extends StatelessWidget {
     final theme = MyWeatherTheme.of(context);
 
     return Padding(
-      padding: const EdgeInsets.only(top: 24, left: 12, right: 12),
+      padding: const EdgeInsets.only(top: 24, left: 12, right: 12,bottom: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -53,14 +53,16 @@ class WeeklyForecastWidget extends StatelessWidget {
 
                     /////////////
                     const SizedBox(height: 4),
-                    Container(
+                    index != (weeklyForecast.length > 7 ? 7 : weeklyForecast.length) - 1
+                        ? Container(
                       height: 1,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: theme.colors.strokeSecondary,
                         borderRadius: BorderRadius.circular(14),
                       ),
-                    ),
+                    )
+                        : const SizedBox.shrink(),
                   ],
                 );
               },
