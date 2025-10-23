@@ -4,13 +4,8 @@ import 'package:geocoding/geocoding.dart';
 class LocationData {
   final double latitude;
   final double longitude;
-  final String cityName;
 
-  LocationData({
-    required this.latitude,
-    required this.longitude,
-    required this.cityName,
-  });
+  LocationData({required this.latitude, required this.longitude});
 }
 
 class LocationService {
@@ -42,15 +37,6 @@ class LocationService {
         position.latitude,
         position.longitude,
       );
-
-      if (placemarks.isNotEmpty) {
-        Placemark place = placemarks.first;
-        cityName =
-            place.locality ??
-            place.subAdministrativeArea ??
-            place.administrativeArea ??
-            'Unknown';
-      }
     } catch (e) {
       print('Error getting city name: $e');
     }
@@ -58,7 +44,6 @@ class LocationService {
     return LocationData(
       latitude: position.latitude,
       longitude: position.longitude,
-      cityName: cityName,
     );
   }
 }

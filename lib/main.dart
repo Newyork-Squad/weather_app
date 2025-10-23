@@ -20,58 +20,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  void _loadWeather() async {
-    final weatherApi = WeatherApiService();
-
-    // try {
-    //   final locationService = LocationService();
-    //   final locationData = await locationService.getCurrentLocation();
-
-    //   final dto = await weatherApi.getWeather(
-    //     latitude: locationData.latitude,
-    //     longitude: locationData.longitude,
-    //   );
-
-    //   final weatherDomainModel = dto.toDomain();
-    //   print('============== Weather Data (DOMAIN) ==============');
-    //   print(
-    //     'Temperature: ${weatherDomainModel.current?.temperature2m}${weatherDomainModel.currentUnits?.temperature2m}',
-    //   );
-    //   print(
-    //     'Feels like: ${weatherDomainModel.current?.apparentTemperature}${weatherDomainModel.currentUnits?.apparentTemperature}',
-    //   );
-    //   print(
-    //     'Humidity: ${weatherDomainModel.current?.relativeHumidity2m}${weatherDomainModel.currentUnits?.relativeHumidity2m}',
-    //   );
-    //   print(
-    //     'Wind Speed: ${weatherDomainModel.current?.windSpeed10m} ${weatherDomainModel.currentUnits?.windSpeed10m}',
-    //   );
-    //   print('Weather Code: ${weatherDomainModel.current?.weatherCode}');
-    //   print('Is Day: ${weatherDomainModel.current?.isDay}');
-    //   print('==========================================');
-
-    //   if (weatherDomainModel.daily.isNotEmpty) {
-    //     final today = weatherDomainModel.daily.first;
-    //     print('--- Daily Forecast ---');
-    //     print('Date: ${today.date}');
-    //     print('Max Temp: ${today.maxTemp}');
-    //     print('Min Temp: ${today.minTemp}');
-    //     print('UV Index: ${today.uvIndex}');
-    //     print('Weather Code: ${today.weatherCode}');
-    //   }
-
-    //   if (weatherDomainModel.hourly.isNotEmpty) {
-    //     final now = weatherDomainModel.hourly.first;
-    //     print('--- Hourly Forecast ---');
-    //     print('Time: ${now.time}');
-    //     print('Temp: ${now.temperature}');
-    //     print('Weather Code: ${now.weatherCode}');
-    //   }
-    // } catch (e) {
-    //   print('Error: $e');
-    // }
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = MyWeatherTheme.of(context);

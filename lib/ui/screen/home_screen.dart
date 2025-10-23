@@ -40,8 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         longitude: locationData.longitude,
       );
       final weatherDomainModel = dto.toDomain();
-      final String fetchedLocation =
-          weatherDomainModel.timezone ?? locationData.cityName;
+      final String fetchedLocation = weatherDomainModel.timezone ?? "Unknown";
 
       setState(() {
         _location = fetchedLocation;
