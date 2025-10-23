@@ -4,10 +4,10 @@ import 'package:intl/intl.dart';
 import 'package:weather_app/utils/weather_utils.dart';
 import 'daily_card.dart';
 
-class WeeklyForecastScreen extends StatelessWidget {
+class WeeklyForecastWidget extends StatelessWidget {
   final List<WeatherDayCard> weeklyForecast;
 
-  const WeeklyForecastScreen({super.key, required this.weeklyForecast});
+  const WeeklyForecastWidget({super.key, required this.weeklyForecast});
 
   @override
   Widget build(BuildContext context) {
