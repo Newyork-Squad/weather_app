@@ -36,7 +36,7 @@ class WeatherItemWidget extends StatelessWidget {
             right: 12,
           ),
           decoration: BoxDecoration(
-            color: theme.colors.backgroundSecondary.withOpacity(0.7),
+            color: theme.colors.backgroundSecondary.withValues(alpha: 0.7),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: theme.colors.strokePrimary, width: 1),
           ),
@@ -56,7 +56,7 @@ class WeatherItemWidget extends StatelessWidget {
               Text(
                 item.hour,
                 style: theme.typography.textTheme.labelMedium?.copyWith(
-                  color: theme.colors.shadePrimary.withOpacity(0.6),
+                  color: theme.colors.shadePrimary.withValues(alpha: 0.6),
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
                 ),
