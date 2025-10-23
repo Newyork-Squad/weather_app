@@ -26,14 +26,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return CustomScrollView(
       slivers: <Widget>[
         // Placeholder for location
-        /*SliverToBoxAdapter(
+        SliverToBoxAdapter(
           child: Container(
             alignment: Alignment.center,
             color: Colors.black,
             width: 20,
             height: 30,
           ),
-        ),*/
+        ),
         CurrentWeather(
           temperature: 22.2,
           weatherIcon: 'assets/images/snow_fall_light_day.png',

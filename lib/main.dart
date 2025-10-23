@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/data/weather_api_service.dart';
 import 'package:weather_app/ui/designSystem/theme/AppThemeProvider.dart';
 import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
 import 'package:weather_app/ui/screen/home_screen.dart';
@@ -22,53 +23,53 @@ class MyApp extends StatelessWidget {
   void _loadWeather() async {
     final weatherApi = WeatherApiService();
 
-    try {
-      final locationService = LocationService();
-      final locationData = await locationService.getCurrentLocation();
+    // try {
+    //   final locationService = LocationService();
+    //   final locationData = await locationService.getCurrentLocation();
 
-      final dto = await weatherApi.getWeather(
-        latitude: locationData.latitude,
-        longitude: locationData.longitude,
-      );
+    //   final dto = await weatherApi.getWeather(
+    //     latitude: locationData.latitude,
+    //     longitude: locationData.longitude,
+    //   );
 
-      final weatherDomainModel = dto.toDomain();
-      print('============== Weather Data (DOMAIN) ==============');
-      print(
-        'Temperature: ${weatherDomainModel.current?.temperature2m}${weatherDomainModel.currentUnits?.temperature2m}',
-      );
-      print(
-        'Feels like: ${weatherDomainModel.current?.apparentTemperature}${weatherDomainModel.currentUnits?.apparentTemperature}',
-      );
-      print(
-        'Humidity: ${weatherDomainModel.current?.relativeHumidity2m}${weatherDomainModel.currentUnits?.relativeHumidity2m}',
-      );
-      print(
-        'Wind Speed: ${weatherDomainModel.current?.windSpeed10m} ${weatherDomainModel.currentUnits?.windSpeed10m}',
-      );
-      print('Weather Code: ${weatherDomainModel.current?.weatherCode}');
-      print('Is Day: ${weatherDomainModel.current?.isDay}');
-      print('==========================================');
+    //   final weatherDomainModel = dto.toDomain();
+    //   print('============== Weather Data (DOMAIN) ==============');
+    //   print(
+    //     'Temperature: ${weatherDomainModel.current?.temperature2m}${weatherDomainModel.currentUnits?.temperature2m}',
+    //   );
+    //   print(
+    //     'Feels like: ${weatherDomainModel.current?.apparentTemperature}${weatherDomainModel.currentUnits?.apparentTemperature}',
+    //   );
+    //   print(
+    //     'Humidity: ${weatherDomainModel.current?.relativeHumidity2m}${weatherDomainModel.currentUnits?.relativeHumidity2m}',
+    //   );
+    //   print(
+    //     'Wind Speed: ${weatherDomainModel.current?.windSpeed10m} ${weatherDomainModel.currentUnits?.windSpeed10m}',
+    //   );
+    //   print('Weather Code: ${weatherDomainModel.current?.weatherCode}');
+    //   print('Is Day: ${weatherDomainModel.current?.isDay}');
+    //   print('==========================================');
 
-      if (weatherDomainModel.daily.isNotEmpty) {
-        final today = weatherDomainModel.daily.first;
-        print('--- Daily Forecast ---');
-        print('Date: ${today.date}');
-        print('Max Temp: ${today.maxTemp}');
-        print('Min Temp: ${today.minTemp}');
-        print('UV Index: ${today.uvIndex}');
-        print('Weather Code: ${today.weatherCode}');
-      }
+    //   if (weatherDomainModel.daily.isNotEmpty) {
+    //     final today = weatherDomainModel.daily.first;
+    //     print('--- Daily Forecast ---');
+    //     print('Date: ${today.date}');
+    //     print('Max Temp: ${today.maxTemp}');
+    //     print('Min Temp: ${today.minTemp}');
+    //     print('UV Index: ${today.uvIndex}');
+    //     print('Weather Code: ${today.weatherCode}');
+    //   }
 
-      if (weatherDomainModel.hourly.isNotEmpty) {
-        final now = weatherDomainModel.hourly.first;
-        print('--- Hourly Forecast ---');
-        print('Time: ${now.time}');
-        print('Temp: ${now.temperature}');
-        print('Weather Code: ${now.weatherCode}');
-      }
-    } catch (e) {
-      print('Error: $e');
-    }
+    //   if (weatherDomainModel.hourly.isNotEmpty) {
+    //     final now = weatherDomainModel.hourly.first;
+    //     print('--- Hourly Forecast ---');
+    //     print('Time: ${now.time}');
+    //     print('Temp: ${now.temperature}');
+    //     print('Weather Code: ${now.weatherCode}');
+    //   }
+    // } catch (e) {
+    //   print('Error: $e');
+    // }
   }
 
   @override
