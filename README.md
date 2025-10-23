@@ -1,2 +1,2 @@
 # weather_app
-Check weather with trendy UI
+Check the weather with trendy UI.
