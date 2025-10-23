@@ -36,7 +36,7 @@ class WeeklyForecastScreen extends StatelessWidget {
             child: ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: weeklyForecast.length > 7 ? 7 : weeklyForecast.length,
+              itemCount: weeklyForecast.length >7 ? 7 : weeklyForecast.length,
               itemBuilder: (context, index) {
                 final day = weeklyForecast[index];
 
