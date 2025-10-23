@@ -1,7 +1,7 @@
 
 
 
-String getWeatherIconRes(int weatherCode,{bool isDay = false}  ) {
+String getWeatherIconRes(int weatherCode,{bool isDay = true}  ) {
   switch (weatherCode) {
     case 0:
       return isDay
