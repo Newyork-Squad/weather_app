@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: SafeArea(child: WeeklyForecastScreen()), // SafeArea to avoid overlaps with system UI
+        child: SafeArea(child: MyHomePage()), // SafeArea to avoid overlaps with system UI
       ),
     );
   }
