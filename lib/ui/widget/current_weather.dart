@@ -46,7 +46,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                 12.0,
                 double.infinity,
               );
-          double imageWidth = 255.0;
+          double imageWidth = 220.0;
           double imageLeftPadding =
               ((screenWidth / 2 - imageWidth / 2) * shrinkPercentage).clamp(
                 12.0,
@@ -63,7 +63,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
               children: [
                 Positioned(
                   left: imageLeftPadding,
-                  bottom: (currentHeight - minHeight - 20).clamp(-30, double.infinity),
+                  bottom: (currentHeight - minHeight + 20 ).clamp(-30, 180),
                   child: Transform.scale(
                     alignment: Alignment.topLeft,
                     scale: shrinkPercentage.clamp(0.8, 1.0),
@@ -82,7 +82,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                               color: Colors.transparent,
                               boxShadow: [
                                 BoxShadow(
-                                  color: theme.colors.glow.withValues(alpha: 0.2),
+                                  color: theme.colors.glow.withValues(alpha: 0.15),
                                   blurRadius:40,
                                   spreadRadius: 0,
                                 ),
