@@ -106,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     hour.weatherCode,
                                     isDay: isDay,
                                   ),
-                                  temperature: "${hour.temperature}",
+                                  temperature: "${hour.temperature.toInt()}°C",
                                   hour: extractHourMinute(hour.time),
                                 ),
                               )

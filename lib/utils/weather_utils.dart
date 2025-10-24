@@ -181,12 +181,18 @@ String getWeatherIconRes(int weatherCode,{bool isDay = true}  ) {
 
 
 String extractHourMinute(String isoDateTime) {
-  // Assumes input is in format: "YYYY-MM-DDTHH:MM"
   final dateTimeParts = isoDateTime.split('T');
-  if (dateTimeParts.length == 2) {
-    return dateTimeParts[1];
-  }
-  return "";
+  if (dateTimeParts.length != 2) return "";
+  final timePart = dateTimeParts[1];
+  final segments = timePart.split(':');
+  if (segments.length < 2) return "";
+  final hour = int.tryParse(RegExp(r'\d+').stringMatch(segments[0]) ?? '') ?? 0;
+  final minuteStr = RegExp(r'\d{1,2}').stringMatch(segments[1]) ?? '00';
+  final minute = int.tryParse(minuteStr) ?? 0;
+  final period = hour >= 12 ? '' : '';
+  var hour12 = hour % 12;
+  if (hour12 == 0) hour12 = 12;
+  return '${hour12}:${minute.toString().padLeft(2, '0')} $period';
 }
 
 
