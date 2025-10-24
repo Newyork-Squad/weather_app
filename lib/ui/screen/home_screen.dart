@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/data/location_service.dart';
+import 'package:weather_app/data/mapper/weather_response_mapper.dart';
+import 'package:weather_app/data/weather_api_service.dart';
 import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
+import 'package:weather_app/ui/widget/current_location.dart';
 import 'package:weather_app/ui/widget/current_weather.dart';
 import 'package:weather_app/ui/widget/weather_today_item_card.dart';
 import 'package:weather_app/ui/widget/weather_today_widget.dart';
@@ -8,6 +12,9 @@ import '../../utils/weather_utils.dart';
 import '../widget/WeatherInfoGrid.dart';
 import '../widget/daily_card.dart';
 import '../widget/weakly_weather_widget.dart';
+
+String _location = "UnKnown";
+final WeatherApiService _weatherApi = WeatherApiService();
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -20,9 +27,31 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    _fetchLocation();
   }
 
+  Future<void> _fetchLocation() async {
+    try {
+      final LocationService locationService = LocationService();
+      final LocationData locationData = await locationService
+          .getCurrentLocation();
+      final dto = await _weatherApi.getWeather(
+        latitude: locationData.latitude,
+        longitude: locationData.longitude,
+      );
+      final weatherDomainModel = dto.toDomain();
+      final String fetchedLocation = weatherDomainModel.timezone ?? "Unknown";
 
+      setState(() {
+        _location = fetchedLocation;
+      });
+    } catch (e) {
+      print('Error fetching location: $e');
+      setState(() {
+        _location = "Error when getting location";
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +59,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return CustomScrollView(
       slivers: <Widget>[
-        // Placeholder for location
-        /*SliverToBoxAdapter(
-          child: Container(
-            alignment: Alignment.center,
-            color: Colors.black,
-            width: 20,
-            height: 30,
-          ),
-        ),*/
+        SliverToBoxAdapter(
+          child: LocationDisplayComponent(locationName: _location),
+        ),
         CurrentWeather(
           temperature: 22.2,
           weatherIcon: getWeatherIconRes(1 , isDay: true),
@@ -75,11 +98,13 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-    SliverToBoxAdapter(
-    child:WeeklyForecastWidget(weeklyForecast: weeklyForecast),
-    )  ],
+        SliverToBoxAdapter(
+          child: WeeklyForecastWidget(weeklyForecast: weeklyForecast),
+        ),
+      ],
     );
   }
+
   //dummy weekly data
   final List<WeatherDayCard> weeklyForecast = [
     WeatherDayCard(

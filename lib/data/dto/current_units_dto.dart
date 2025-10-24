@@ -1,5 +1,3 @@
-import 'package:weather_app/data/model/current_units.dart';
-
 class CurrentUnitsDto {
   final String? time;
   final String? interval;
@@ -39,5 +37,4 @@ class CurrentUnitsDto {
       windSpeed10m: json['wind_speed_10m'] as String?,
     );
   }
-
 }
