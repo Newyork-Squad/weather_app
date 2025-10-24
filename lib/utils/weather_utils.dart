@@ -209,3 +209,11 @@ String getDayName(String date) {
     return "";
   }
 }
+
+
+String removeDecimal(String value) {
+  if (value.contains('.')) {
+    return value.substring(0, value.indexOf('.'));
+  }
+  return value;
+}

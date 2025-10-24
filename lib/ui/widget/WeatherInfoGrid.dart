@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../utils/weather_utils.dart';
 import 'weather_card.dart';
 
 class WeatherInfoGrid extends StatelessWidget {
@@ -27,39 +28,39 @@ class WeatherInfoGrid extends StatelessWidget {
       mainAxisSpacing: 6,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      children: const [
+      children: [
         WeatherCard(
           icon: 'assets/icons/ic_fast_wind.svg',
-          value: '13',
+          value: removeDecimal(windSpeed),
           unit: 'KM/h',
           label: 'Wind',
         ),
         WeatherCard(
           icon: 'assets/icons/ic_humidity.svg',
-          value: '24',
+          value: removeDecimal(humidity),
           unit: '%',
           label: 'Humidity',
         ),
         WeatherCard(
           icon: 'assets/icons/ic_rain.svg',
-          value: '2',
+          value: removeDecimal(rainChance),
           unit: '%',
           label: 'Rain',
         ),
         WeatherCard(
           icon: 'assets/icons/ic_uv.svg',
-          value: '2',
+          value: removeDecimal(uvIndex),
           label: 'UV Index',
         ),
         WeatherCard(
           icon: 'assets/icons/ic_arrow_down_05.svg',
-          value: '1012',
+          value: removeDecimal(pressure),
           unit: 'hPa',
           label: 'Pressure',
         ),
         WeatherCard(
           icon: 'assets/icons/ic_temperature.svg',
-          value: '22',
+          value: removeDecimal(feelsLike),
           unit: '°C',
           label: 'Feels like',
         ),
