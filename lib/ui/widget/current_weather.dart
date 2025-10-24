@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widget_previews.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../designSystem/theme/weather_theme.dart';
@@ -46,7 +47,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                 12.0,
                 double.infinity,
               );
-          double imageWidth = 220.0;
+          double imageWidth = 255.0;
           double imageLeftPadding =
               ((screenWidth / 2 - imageWidth / 2) * shrinkPercentage).clamp(
                 12.0,
@@ -63,7 +64,10 @@ class _CurrentWeatherState extends State<CurrentWeather> {
               children: [
                 Positioned(
                   left: imageLeftPadding,
-                  bottom: (currentHeight - minHeight + 20 ).clamp(-30, 180),
+                  bottom: (currentHeight - minHeight - 20).clamp(
+                    -30,
+                    double.infinity,
+                  ),
                   child: Transform.scale(
                     alignment: Alignment.topLeft,
                     scale: shrinkPercentage.clamp(0.8, 1.0),
@@ -82,8 +86,10 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                               color: Colors.transparent,
                               boxShadow: [
                                 BoxShadow(
-                                  color: theme.colors.glow.withValues(alpha: 0.15),
-                                  blurRadius:40,
+                                  color: theme.colors.glow.withValues(
+                                    alpha: 0.2,
+                                  ),
+                                  blurRadius: 40,
                                   spreadRadius: 0,
                                 ),
                               ],
