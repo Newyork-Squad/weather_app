@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/data/location_service.dart';
+import 'package:weather_app/data/repository_impl.dart';
 import 'package:weather_app/data/weather_api_service.dart';
 import 'package:weather_app/ui/designSystem/theme/AppThemeProvider.dart';
 import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
 import 'package:weather_app/ui/screen/home_screen.dart';
-import 'package:weather_app/ui/widget/weakly_weather_widget.dart';
 
 void main() {
   runApp(
@@ -16,6 +17,11 @@ void main() {
     ),
   );
 }
+
+final weatherRepository = WeatherRepositoryImpl(
+  LocationService(),
+  WeatherApiService(),
+);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -39,7 +45,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           child: SafeArea(
-            child: MyHomePage(),
+            child: MyHomePage(weatherRepository: weatherRepository),
           ), // SafeArea to avoid overlaps with system UI
         ),
       ),
