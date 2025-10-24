@@ -137,7 +137,17 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           );
         } else if (state is WeatherError) {
-          return Center(child: Text('Error: ${state.message}'));
+          print(state.message);
+          return Center(
+            child: Text(
+              state.message,
+              // 'Failed to load weather data\nPLease check your internet connection',
+              style: theme.typography.textTheme.bodyLarge?.copyWith(
+                color: theme.colors.shadePrimary,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          );
         }
         return const SizedBox();
       },
