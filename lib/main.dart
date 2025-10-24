@@ -5,7 +5,6 @@ import 'package:weather_app/ui/designSystem/theme/AppThemeProvider.dart';
 import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
 import 'package:weather_app/ui/screen/home_screen.dart';
 import 'package:weather_app/ui/state/weather_cubit.dart';
-import 'package:weather_app/ui/widget/weekly_weather_widget.dart';
 
 import 'data/location_service.dart';
 import 'data/repository_impl.dart';

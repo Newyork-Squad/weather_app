@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../designSystem/theme/weather_theme.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/utils/weather_utils.dart';
 import 'daily_card.dart';
 
 class WeeklyForecastWidget extends StatelessWidget {

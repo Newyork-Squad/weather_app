@@ -28,8 +28,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = MyWeatherTheme.of(context);
-
     return BlocBuilder<WeatherCubit, WeatherState>(
       builder: (context, state) {
         if (state is WeatherLoading) {
