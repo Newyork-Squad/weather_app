@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/data/location_service.dart';
-import 'package:weather_app/data/mapper/weather_response_mapper.dart';
-import 'package:weather_app/data/weather_api_service.dart';
-import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
+import 'package:weather_app/data/respository.dart';
 import 'package:weather_app/ui/widget/current_location.dart';
 import 'package:weather_app/ui/widget/current_weather.dart';
 import 'package:weather_app/ui/widget/weather_today_item_card.dart';
@@ -13,17 +10,16 @@ import '../widget/WeatherInfoGrid.dart';
 import '../widget/daily_card.dart';
 import '../widget/weakly_weather_widget.dart';
 
-String _location = "UnKnown";
-final WeatherApiService _weatherApi = WeatherApiService();
-
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  final WeatherRepository weatherRepository;
+  const MyHomePage({super.key, required this.weatherRepository});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String _location = "UnKnown";
   @override
   void initState() {
     super.initState();
@@ -31,32 +27,14 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _fetchLocation() async {
-    try {
-      final LocationService locationService = LocationService();
-      final LocationData locationData = await locationService
-          .getCurrentLocation();
-      final dto = await _weatherApi.getWeather(
-        latitude: locationData.latitude,
-        longitude: locationData.longitude,
-      );
-      final weatherDomainModel = dto.toDomain();
-      final String fetchedLocation = weatherDomainModel.timezone ?? "Unknown";
-
-      setState(() {
-        _location = fetchedLocation;
-      });
-    } catch (e) {
-      print('Error fetching location: $e');
-      setState(() {
-        _location = "Error when getting location";
-      });
-    }
+    final location = await widget.weatherRepository.getCityName();
+    setState(() {
+      _location = location;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = MyWeatherTheme.of(context);
-
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(
