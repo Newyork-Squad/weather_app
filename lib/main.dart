@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
       child: Directionality(
         textDirection: TextDirection.ltr,
         child: Container(
-          // Same background for the entire app
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -40,7 +39,7 @@ class MyApp extends StatelessWidget {
           ),
           child: SafeArea(
             child: MyHomePage(),
-          ), // SafeArea to avoid overlaps with system UI
+          ),
         ),
       ),
     );
