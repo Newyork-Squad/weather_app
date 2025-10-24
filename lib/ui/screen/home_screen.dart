@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return const Center(child: CircularProgressIndicator());
         } else if (state is WeatherLoaded) {
           final weather = state.weather;
-          final isDay = (state.weather.current?.isDay == 0);
+          final isDay = (state.weather.current?.isDay == 1);
           return Material(
             child: Directionality(
               textDirection: TextDirection.ltr,
