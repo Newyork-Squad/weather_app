@@ -26,7 +26,7 @@ class WeatherCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
           color: theme.colors.strokePrimary,
-          width: 1,
+          width: 3,
         ),
       ),
       padding: const EdgeInsets.all(12.0),
@@ -56,7 +56,7 @@ class WeatherCard extends StatelessWidget {
                 if (unit != null)
                   TextSpan(
                     text: ' $unit',
-                    style: theme.typography.textTheme.labelSmall?.copyWith(
+                    style: theme.typography.textTheme.labelLarge?.copyWith(
                       color: theme.colors.shadeSecondary,
                     ),
                   ),

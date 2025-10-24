@@ -23,8 +23,8 @@ class WeatherInfoGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 3,
-      crossAxisSpacing: 16,
-      mainAxisSpacing: 16,
+      crossAxisSpacing: 6,
+      mainAxisSpacing: 6,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       children: const [
