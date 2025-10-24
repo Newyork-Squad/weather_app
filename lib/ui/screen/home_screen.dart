@@ -35,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return const Center(child: CircularProgressIndicator());
         } else if (state is WeatherLoaded) {
           final weather = state.weather;
+          final isDay = (state.weather.current?.isDay == 0);
           return Material(
             child: Directionality(
               textDirection: TextDirection.ltr,
@@ -62,6 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         temperature: weather.current?.temperature2m ?? 0,
                         weatherIcon: getWeatherIconRes(
                           weather.current?.weatherCode ?? 1,
+                          isDay: isDay,
                         ),
                         weatherMessage: mapWeatherCodeToDescription(
                           weather.current?.weatherCode,
@@ -102,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 (hour) => WeatherItem(
                                   imagePath: getWeatherIconRes(
                                     hour.weatherCode,
+                                    isDay: isDay,
                                   ),
                                   temperature: "${hour.temperature}",
                                   hour: extractHourMinute(hour.time),
@@ -118,7 +121,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                   day: day.date,
                                   maxTemp: day.maxTemp.toInt(),
                                   minTemp: day.minTemp.toInt(),
-                                  imagePath: getWeatherIconRes(day.weatherCode),
+                                  imagePath: getWeatherIconRes(
+                                    day.weatherCode,
+                                    isDay: isDay,
+                                  ),
                                 ),
                               )
                               .toList(),

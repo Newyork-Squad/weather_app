@@ -47,7 +47,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                 12.0,
                 double.infinity,
               );
-          double imageWidth = 255.0;
+          double imageWidth = 215.0;
           double imageLeftPadding =
               ((screenWidth / 2 - imageWidth / 2) * shrinkPercentage).clamp(
                 12.0,
