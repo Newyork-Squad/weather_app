@@ -138,50 +138,15 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         } else if (state is WeatherError) {
           print(state.message);
-          var message = "";
-          if (state.message.contains("Location permission denied")) {
-            message =
-                "Location permission denied.\nPlease enable GPS and location permissions in your device settings.";
-          } else {
-            message =
-                "Failed to load weather data.\n\nPlease check location permissions \nand your internet connection.";
-          }
-          return Stack(
-            children: [
-              Container(
-                // Same background for the entire app
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xFF87CEFA),
-                      Color(0xFFFFFFFF),
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                )),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/fog.png',
-                    width: 150,
-                    height: 150,
-                  ),
-                  const SizedBox(height: 20),
-                  Center(
-                    child: Text(
-                      message,
-                      // 'Failed to load weather data\nPLease check your internet connection',
-                      style: theme.typography.textTheme.bodyLarge?.copyWith(
-                        color: theme.colors.shadePrimary,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
+          return Center(
+            child: Text(
+              state.message,
+              // 'Failed to load weather data\nPLease check your internet connection',
+              style: theme.typography.textTheme.bodyLarge?.copyWith(
+                color: theme.colors.shadePrimary,
               ),
-            ],
+              textAlign: TextAlign.center,
+            ),
           );
         }
         return const SizedBox();

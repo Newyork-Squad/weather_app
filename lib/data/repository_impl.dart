@@ -27,7 +27,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
       final WeatherResponse weather = weatherDto.toDomain();
       return weather;
     } catch (e) {
-      throw e;
+      throw Exception('Failed to load weather data: $e');
     }
   }
 }

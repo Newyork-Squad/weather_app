@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:weather_app/data/dto/weather_response_dto.dart';
-import 'package:weather_app/data/model/location_exception.dart';
 
 class WeatherApiService {
   final Dio _dio;
@@ -51,10 +50,6 @@ class WeatherApiService {
       } else if (e.response?.statusCode == 404) {
         throw Exception('Data not found');
       } else {
-        if (e.runtimeType == LocationException) {
-          print(e);
-          throw LocationException("Location permission denied");
-        }
         throw Exception('Failed to fetch weather data: ${e.message}');
       }
     } catch (e) {
