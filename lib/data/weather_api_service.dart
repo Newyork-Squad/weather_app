@@ -37,6 +37,7 @@ class WeatherApiService {
               'temperature_2m_max,temperature_2m_min,weathercode,uv_index_max',
           'timezone': 'auto',
           'hourly': 'temperature_2m,weathercode',
+          'forecast_hours': 12
         },
       );
 
