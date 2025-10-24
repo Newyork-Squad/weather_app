@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/data/weather_api_service.dart';
 import 'package:weather_app/ui/designSystem/theme/AppThemeProvider.dart';
 import 'package:weather_app/ui/designSystem/theme/weather_theme.dart';
 import 'package:weather_app/ui/screen/home_screen.dart';
-import 'package:weather_app/ui/widget/weakly_weather_widget.dart';
+import 'package:weather_app/ui/state/weather_cubit.dart';
+import 'package:weather_app/ui/widget/weekly_weather_widget.dart';
+
+import 'data/location_service.dart';
+import 'data/repository_impl.dart';
 
 void main() {
+  final weatherRepository = WeatherRepositoryImpl(
+    weatherApiService: WeatherApiService(),
+    locationService: LocationService(),
+  );
   runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AppThemeProvider(
+    BlocProvider(
+      create: (_) => WeatherCubit(weatherRepository),
+      child: AppThemeProvider(
         brightness: Brightness.light,
-        child: const MyApp(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: const MyApp(),
+        ),
       ),
     ),
   );
@@ -27,7 +39,6 @@ class MyApp extends StatelessWidget {
       child: Directionality(
         textDirection: TextDirection.ltr,
         child: Container(
-          // Same background for the entire app
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -38,11 +49,12 @@ class MyApp extends StatelessWidget {
               end: Alignment.bottomCenter,
             ),
           ),
-          child: SafeArea(
+          child: const SafeArea(
             child: MyHomePage(),
-          ), // SafeArea to avoid overlaps with system UI
+          ),
         ),
       ),
     );
   }
 }
+
