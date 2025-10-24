@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       WeatherItem(
                         imagePath: getWeatherIconRes(hour.weatherCode),
                         temperature: "${hour.temperature}",
-                        hour: hour.time,
+                        hour: extractHourMinute(hour.time),
                       )).toList(),
                 ),
               ),
@@ -96,3 +96,6 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
   }}
+
+
+

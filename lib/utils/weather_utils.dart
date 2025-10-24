@@ -179,3 +179,27 @@ String getWeatherIconRes(int weatherCode,{bool isDay = true}  ) {
     }
   }
 
+
+String extractHourMinute(String isoDateTime) {
+  // Assumes input is in format: "YYYY-MM-DDTHH:MM"
+  final dateTimeParts = isoDateTime.split('T');
+  if (dateTimeParts.length == 2) {
+    return dateTimeParts[1];
+  }
+  return "";
+}
+
+
+String getDayName(String date) {
+  // Expects date in format: "YYYY-MM-DD"
+  try {
+    final parsedDate = DateTime.parse(date);
+    const weekdays = [
+      "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+    ];
+    // DateTime.weekday returns [1..7] where 1 is Monday
+    return weekdays[parsedDate.weekday - 1];
+  } catch (e) {
+    return "";
+  }
+}
