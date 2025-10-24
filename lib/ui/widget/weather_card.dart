@@ -59,9 +59,9 @@ class WeatherCard extends StatelessWidget {
                 if (unit != null)
                   TextSpan(
                     text: ' $unit',
-                    style: theme.typography.textTheme.labelSmall?.copyWith(
+                    style: theme.typography.textTheme.labelLarge?.copyWith(
                       color: theme.colors.shadeSecondary,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
               ],
