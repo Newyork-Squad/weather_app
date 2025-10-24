@@ -7,6 +7,7 @@ extension HourlyUnitMapper on HourlyUnitsDto{
       time: time,
       temperature2m: temperature2m,
       weathercode: weathercode,
+      isDay: isDay,
     );
   }
 }

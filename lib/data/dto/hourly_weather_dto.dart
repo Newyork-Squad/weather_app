@@ -2,11 +2,13 @@ class HourlyWeatherDto {
   final List<String>? time;
   final List<double>? temperature2m;
   final List<int>? weathercode;
+  final List<int>? isDay;
 
   HourlyWeatherDto({
     this.time,
     this.temperature2m,
     this.weathercode,
+    this.isDay,
   });
 
   factory HourlyWeatherDto.fromJson(Map<String, dynamic> json) {
@@ -19,6 +21,9 @@ class HourlyWeatherDto {
           : null,
       weathercode: json['weathercode'] != null
           ? (json['weathercode'] as List).map((e) => (e as num).toInt()).toList()
+          : null,
+      isDay: json['is_day'] != null
+          ? (json['is_day'] as List).map((e) => (e as num).toInt()).toList()
           : null,
     );
   }

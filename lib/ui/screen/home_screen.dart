@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 (hour) => WeatherItem(
                                   imagePath: getWeatherIconRes(
                                     hour.weatherCode,
-                                    isDay: isDay,
+                                    isDay: hour.isDay == 1,
                                   ),
                                   temperature: "${hour.temperature.toInt()}°C",
                                   hour: extractHourMinute(hour.time),
