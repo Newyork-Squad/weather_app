@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../designSystem/theme/weather_theme.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/utils/weather_utils.dart';
+
+import '../designSystem/theme/weather_theme.dart';
 import 'daily_card.dart';
 
 class WeeklyForecastWidget extends StatelessWidget {
@@ -14,7 +14,7 @@ class WeeklyForecastWidget extends StatelessWidget {
     final theme = MyWeatherTheme.of(context);
 
     return Padding(
-      padding: const EdgeInsets.only(top: 24, left: 12, right: 12,bottom: 16),
+      padding: const EdgeInsets.only(top: 24, left: 12, right: 12, bottom: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -36,7 +36,7 @@ class WeeklyForecastWidget extends StatelessWidget {
             child: ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: weeklyForecast.length >7 ? 7 : weeklyForecast.length,
+              itemCount: weeklyForecast.length > 7 ? 7 : weeklyForecast.length,
               itemBuilder: (context, index) {
                 final day = weeklyForecast[index];
 
@@ -45,7 +45,7 @@ class WeeklyForecastWidget extends StatelessWidget {
                     WeatherDayCard(
                       day: DateFormat(
                         'EEEE',
-                      ).format(DateFormat('dd/MM/yyyy').parse(day.day)),
+                      ).format(DateFormat('yyyy-MM-dd').parse(day.day)),
                       imagePath: day.imagePath,
                       maxTemp: day.maxTemp,
                       minTemp: day.minTemp,
@@ -55,13 +55,13 @@ class WeeklyForecastWidget extends StatelessWidget {
                     const SizedBox(height: 4),
                     index != (weeklyForecast.length > 7 ? 7 : weeklyForecast.length) - 1
                         ? Container(
-                      height: 1,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: theme.colors.strokeSecondary,
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                    )
+                            height: 1,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: theme.colors.strokeSecondary,
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                          )
                         : const SizedBox.shrink(),
                   ],
                 );

@@ -5,7 +5,7 @@ extension HourlyWeatherMapper on HourlyWeatherDto {
   List<HourlyWeather> toDomain() {
     final List<HourlyWeather> result = [];
 
-    if (time == null || temperature2m == null || weathercode == null) {
+    if (time == null || temperature2m == null || weathercode == null || isDay == null) {
       return result;
     }
 
@@ -15,6 +15,7 @@ extension HourlyWeatherMapper on HourlyWeatherDto {
           time: time![i],
           temperature: temperature2m![i],
           weatherCode: weathercode![i],
+          isDay: isDay![i],
         ),
       );
     }
