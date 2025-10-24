@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../designSystem/theme/weather_theme.dart';
 import 'package:intl/intl.dart';
+
+import '../designSystem/theme/weather_theme.dart';
 import 'daily_card.dart';
 
 class WeeklyForecastWidget extends StatelessWidget {
@@ -44,7 +45,7 @@ class WeeklyForecastWidget extends StatelessWidget {
                     WeatherDayCard(
                       day: DateFormat(
                         'EEEE',
-                      ).format(DateFormat('dd-MM-yyyy').parse(day.day)),
+                      ).format(DateFormat('yyyy-MM-dd').parse(day.day)),
                       imagePath: day.imagePath,
                       maxTemp: day.maxTemp,
                       minTemp: day.minTemp,

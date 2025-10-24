@@ -34,10 +34,10 @@ class LocationDisplayComponent extends StatelessWidget {
           ),
         ),
 
-        const SizedBox(width: 2.0),
+        const SizedBox(width: 4.0),
 
         Text(
-          locationName,
+          locationName.contains('/') ? locationName.split('/').last : locationName,
           style: theme.typography.textTheme.labelLarge?.copyWith(
             color: theme.colors.shadeQuaternary,
           ),
